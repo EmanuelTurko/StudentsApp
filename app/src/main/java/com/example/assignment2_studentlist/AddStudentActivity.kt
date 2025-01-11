@@ -1,6 +1,7 @@
 package com.example.assignment2_studentlist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,7 @@ class AddStudentActivity : AppCompatActivity() {
         val studentName = binding?.studentNameEditText?.text.toString()
         val studentPhone = binding?.studentPhoneEditText?.text.toString()
         val studentAddress = binding?.studentAdressEditText?.text.toString()
+        Log.d("TAG", "Creating student: $studentId, $studentName, $studentPhone, $studentAddress")
         val student = Student(
             name = studentName,
             id = studentId,
@@ -52,7 +54,9 @@ class AddStudentActivity : AppCompatActivity() {
             avatarURL = "",
             isChecked = false)
         Model.shared.addStudent(student)
+        Log.d("TAG", "Student added to model. Total students: ${Model.shared.students.size}")
         finish()
+
     }
     fun onResetClicked(view: View){
         binding?.studentIdEditText?.setText("")
