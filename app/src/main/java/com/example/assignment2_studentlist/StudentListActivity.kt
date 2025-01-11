@@ -82,7 +82,7 @@ class StudentListActivity : AppCompatActivity() {
             }
 
             holder.itemView.setOnClickListener {
-                StuedntDetails(student)
+                StuedntDetails(student,pos)
             }
         }
 
@@ -93,8 +93,10 @@ class StudentListActivity : AppCompatActivity() {
             notifyDataSetChanged()
         }
     }
-    private fun StuedntDetails(student: Student){
+    private fun StuedntDetails(student: Student, pos:Int){
         intent.setClass(this, StudentDetailsActivity::class.java)
+        intent.putExtra("studentIndex", pos)
         this.startActivity(intent)
+
     }
 }
